@@ -24,7 +24,7 @@ st.write("""
 Upload energy consumption data to detect fraudulent behavior using Machine Learning.
 """)
 
-# Model info (portfolio value)
+# Model info
 st.info("Model Used: Random Forest Classifier")
 st.info("Model Accuracy: 99%")
 
@@ -38,7 +38,7 @@ if uploaded_file is not None:
 
     data = pd.read_csv(uploaded_file)
 
-    st.subheader("📄 Uploaded Data")
+    st.subheader("📄 Uploaded Data Preview")
     st.dataframe(data.head())
 
     if st.button("🔍 Detect Fraud"):
@@ -75,22 +75,25 @@ if uploaded_file is not None:
                     input_data[col] = le.fit_transform(input_data[col])
 
             # ===============================
-            # Make prediction
+            # Make Prediction
             # ===============================
 
             predictions = model.predict(input_data)
 
-            # Add results
             data["Prediction"] = [
                 "Fraud" if p == 1 else "No Fraud"
                 for p in predictions
             ]
 
+            # ===============================
+            # Prediction Results
+            # ===============================
+
             st.subheader("✅ Prediction Results")
             st.dataframe(data)
 
             # ===============================
-            # Summary Dashboard
+            # Summary Dashboard (FIRST INSIGHT)
             # ===============================
 
             fraud_count = (predictions == 1).sum()
@@ -100,13 +103,12 @@ if uploaded_file is not None:
             st.write("## 📊 Summary Dashboard")
 
             col1, col2, col3 = st.columns(3)
-
             col1.metric("Total Records", total_records)
             col2.metric("Fraud Cases", fraud_count)
             col3.metric("Fraud %", f"{fraud_percentage:.2f}%")
 
             # ===============================
-            # Fraud vs Normal Chart
+            # Fraud vs Non-Fraud Chart
             # ===============================
 
             st.subheader("📈 Fraud vs Non-Fraud Distribution")
@@ -120,6 +122,59 @@ if uploaded_file is not None:
             ax.set_title("Fraud vs Non-Fraud")
 
             st.pyplot(fig)
+
+            # ===============================
+            # Top 10 Fraud Cases
+            # ===============================
+
+            st.subheader("🔴 Top 10 Fraud Cases")
+
+            fraud_cases = data[data["Prediction"] == "Fraud"].head(10)
+
+            if len(fraud_cases) > 0:
+                st.dataframe(fraud_cases)
+            else:
+                st.write("No fraud cases detected.")
+
+            # ===============================
+            # Feature Importance (Model Explainability)
+            # ===============================
+
+            st.subheader("⭐ Feature Importance (What causes fraud?)")
+
+            if hasattr(model, "feature_importances_"):
+                importance = model.feature_importances_
+                feature_names = input_data.columns
+
+                importance_df = pd.DataFrame({
+                    "Feature": feature_names,
+                    "Importance": importance
+                }).sort_values("Importance", ascending=False)
+
+                fig2, ax2 = plt.subplots()
+                ax2.barh(importance_df["Feature"], importance_df["Importance"])
+                ax2.set_xlabel("Importance Score")
+                ax2.set_title("Feature Importance")
+                ax2.invert_yaxis()
+
+                st.pyplot(fig2)
+            else:
+                st.write("Feature importance not available for this model.")
+
+            # ===============================
+            # Download Results Button
+            # ===============================
+
+            st.subheader("⬇ Download Results")
+
+            csv = data.to_csv(index=False).encode("utf-8")
+
+            st.download_button(
+                label="Download Results as CSV",
+                data=csv,
+                file_name="fraud_detection_results.csv",
+                mime="text/csv"
+            )
 
         except Exception as e:
             st.error(f"Prediction Error: {e}")
