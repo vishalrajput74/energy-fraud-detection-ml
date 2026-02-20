@@ -5,14 +5,44 @@ import os
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 
+
 # ===============================
-# Load Model
+# Page Config
 # ===============================
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "fraud_model.pkl")
+st.set_page_config(
+    page_title="Energy Fraud Detection",
+    page_icon="⚡",
+    layout="wide"
+)
 
-model = joblib.load(MODEL_PATH)
+
+# ===============================
+# Load Model (Robust + Cached)
+# ===============================
+
+@st.cache_resource
+def load_model():
+    try:
+        # Try loading from project root/models
+        BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+        MODEL_PATH = os.path.join(BASE_DIR, "models", "fraud_model.pkl")
+        return joblib.load(MODEL_PATH)
+
+    except:
+        try:
+            # Fallback path
+            return joblib.load("models/fraud_model.pkl")
+        except Exception as e:
+            st.error(f"Model loading failed: {e}")
+            return None
+
+
+model = load_model()
+
+if model is None:
+    st.stop()
+
 
 # ===============================
 # UI
@@ -24,9 +54,9 @@ st.write("""
 Upload energy consumption data to detect fraudulent behavior using Machine Learning.
 """)
 
-# Model info
 st.info("Model Used: Random Forest Classifier")
 st.info("Model Accuracy: 99%")
+
 
 # ===============================
 # Upload Data
@@ -47,7 +77,7 @@ if uploaded_file is not None:
             input_data = data.copy()
 
             # ===============================
-            # Remove columns not used in training
+            # Remove unused columns
             # ===============================
 
             drop_columns = ["UserID", "MeterID", "FraudReported"]
@@ -93,7 +123,7 @@ if uploaded_file is not None:
             st.dataframe(data)
 
             # ===============================
-            # Summary Dashboard (FIRST INSIGHT)
+            # Summary Dashboard
             # ===============================
 
             fraud_count = (predictions == 1).sum()
@@ -137,12 +167,13 @@ if uploaded_file is not None:
                 st.write("No fraud cases detected.")
 
             # ===============================
-            # Feature Importance (Model Explainability)
+            # Feature Importance
             # ===============================
 
             st.subheader("⭐ Feature Importance (What causes fraud?)")
 
             if hasattr(model, "feature_importances_"):
+
                 importance = model.feature_importances_
                 feature_names = input_data.columns
 
@@ -158,11 +189,12 @@ if uploaded_file is not None:
                 ax2.invert_yaxis()
 
                 st.pyplot(fig2)
+
             else:
                 st.write("Feature importance not available for this model.")
 
             # ===============================
-            # Download Results Button
+            # Download Results
             # ===============================
 
             st.subheader("⬇ Download Results")
