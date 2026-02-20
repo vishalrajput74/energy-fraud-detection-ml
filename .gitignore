@@ -1,5 +1,18 @@
-.ipynb_checkpoints/
+
+# Python
 __pycache__/
-*.pkl
-*.csv
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models (optional)
+models/*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+venv/
 .env
