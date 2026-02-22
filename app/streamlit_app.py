@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 # ===============================
-# Page Config (Better Layout)
+# Page Config
 # ===============================
 
 st.set_page_config(
@@ -42,185 +42,258 @@ if model is None:
 
 
 # ===============================
-# Header UI
+# Sidebar Navigation
 # ===============================
 
-st.title("⚡ AI-Based Energy Consumption Fraud Detection System")
+st.sidebar.title("⚡ Energy Fraud Detection")
 
-st.markdown("""
-Detect fraudulent electricity and gas consumption using Machine Learning.
-Upload your dataset and get instant predictions with analytics.
-""")
-
-st.divider()
-
-st.info("Model: Random Forest Classifier | Accuracy: 99%")
+page = st.sidebar.radio(
+    "Navigate",
+    ["📊 Dashboard", "📄 Data Overview", "🤖 Model Info"]
+)
 
 
-# ===============================
-# Upload Section
-# ===============================
+# ============================================================
+# 📊 DASHBOARD PAGE
+# ============================================================
 
-uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
+if page == "📊 Dashboard":
 
-if uploaded_file is not None:
+    st.title("⚡ AI-Based Energy Consumption Fraud Detection System")
 
-    data = pd.read_csv(uploaded_file)
-
-    st.subheader("📄 Uploaded Data Preview")
-    st.dataframe(data.head(10), use_container_width=True)
+    st.markdown("""
+    Detect fraudulent electricity and gas consumption using Machine Learning.
+    Upload your dataset and get instant predictions with analytics.
+    """)
 
     st.divider()
 
-    if st.button("🔍 Detect Fraud", use_container_width=True):
+    st.info("Model: Random Forest Classifier | Accuracy: 99%")
 
-        try:
-            input_data = data.copy()
+    uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
 
-            # ===============================
-            # Remove unused columns
-            # ===============================
+    if uploaded_file is not None:
 
-            drop_columns = ["UserID", "MeterID", "FraudReported"]
+        data = pd.read_csv(uploaded_file)
 
-            for col in drop_columns:
-                if col in input_data.columns:
-                    input_data = input_data.drop(col, axis=1)
+        st.subheader("📄 Uploaded Data Preview")
+        st.dataframe(data.head(10), use_container_width=True)
 
-            # ===============================
-            # Encode categorical columns
-            # ===============================
+        st.divider()
 
-            categorical_cols = [
-                "UsageType",
-                "TariffPlan",
-                "Location",
-                "TimeOfDay",
-                "MeterStatus",
-                "PaymentHistory"
-            ]
+        if st.button("🔍 Detect Fraud", use_container_width=True):
 
-            for col in categorical_cols:
-                if col in input_data.columns:
-                    le = LabelEncoder()
-                    input_data[col] = le.fit_transform(input_data[col])
+            try:
+                input_data = data.copy()
 
-            # ===============================
-            # Prediction
-            # ===============================
+                # Remove unused columns
+                drop_columns = ["UserID", "MeterID", "FraudReported"]
+                for col in drop_columns:
+                    if col in input_data.columns:
+                        input_data = input_data.drop(col, axis=1)
 
-            predictions = model.predict(input_data)
+                # Encode categorical columns
+                categorical_cols = [
+                    "UsageType",
+                    "TariffPlan",
+                    "Location",
+                    "TimeOfDay",
+                    "MeterStatus",
+                    "PaymentHistory"
+                ]
 
-            data["Prediction"] = [
-                "Fraud" if p == 1 else "No Fraud"
-                for p in predictions
-            ]
+                for col in categorical_cols:
+                    if col in input_data.columns:
+                        le = LabelEncoder()
+                        input_data[col] = le.fit_transform(input_data[col])
 
-            st.success("Fraud detection completed successfully")
+                # Prediction
+                predictions = model.predict(input_data)
 
-            # ===============================
-            # Summary Dashboard
-            # ===============================
+                data["Prediction"] = [
+                    "Fraud" if p == 1 else "No Fraud"
+                    for p in predictions
+                ]
 
-            fraud_count = (predictions == 1).sum()
-            total_records = len(data)
-            fraud_percentage = (fraud_count / total_records) * 100
+                st.success("Fraud detection completed successfully")
 
-            st.subheader("📊 Summary Dashboard")
+                # ===============================
+                # Business Summary (KPI)
+                # ===============================
 
-            col1, col2, col3 = st.columns(3)
+                fraud_count = (predictions == 1).sum()
+                total_records = len(data)
+                fraud_percentage = (fraud_count / total_records) * 100
 
-            col1.metric("Total Records", total_records)
-            col2.metric("Fraud Cases", fraud_count)
-            col3.metric("Fraud %", f"{fraud_percentage:.2f}%")
+                st.subheader("📊 Business Summary")
+                st.caption("Key fraud detection indicators")
 
-            st.divider()
+                col1, col2, col3 = st.columns(3)
 
-            # ===============================
-            # Fraud Distribution (Better Chart)
-            # ===============================
+                col1.metric("Total Records", total_records)
+                col2.metric(
+                    "Fraud Cases",
+                    fraud_count,
+                    delta="High Risk" if fraud_percentage > 50 else "Normal"
+                )
+                col3.metric("Fraud %", f"{fraud_percentage:.2f}%")
 
-            st.subheader("📈 Fraud Distribution")
+                st.divider()
 
-            fraud_counts = data["Prediction"].value_counts()
+                # ===============================
+                # Donut Chart (Professional)
+                # ===============================
 
-            fig, ax = plt.subplots()
-            ax.pie(
-                fraud_counts.values,
-                labels=fraud_counts.index,
-                autopct="%1.1f%%",
-                startangle=90
-            )
-            ax.set_title("Fraud vs Non-Fraud")
+                st.subheader("📈 Fraud Distribution")
 
-            st.pyplot(fig)
+                fraud_counts = data["Prediction"].value_counts()
 
-            st.divider()
+                fig, ax = plt.subplots()
 
-            # ===============================
-            # Top 10 Fraud Cases
-            # ===============================
+                colors = ["#ff4b4b", "#00c853"]
 
-            st.subheader("🔴 Top 10 Fraud Cases")
+                ax.pie(
+                    fraud_counts.values,
+                    labels=fraud_counts.index,
+                    autopct="%1.1f%%",
+                    colors=colors,
+                    wedgeprops=dict(width=0.4)
+                )
 
-            fraud_cases = data[data["Prediction"] == "Fraud"].head(10)
+                ax.set_title("Fraud vs Non-Fraud")
+                st.pyplot(fig)
 
-            if len(fraud_cases) > 0:
-                st.dataframe(fraud_cases, use_container_width=True)
-            else:
-                st.write("No fraud cases detected.")
+                st.divider()
 
-            st.divider()
+                # ===============================
+                # Top Fraud Cases (Sorted)
+                # ===============================
 
-            # ===============================
-            # Feature Importance (Improved)
-            # ===============================
+                st.subheader("🔴 Top 10 High Risk Fraud Cases")
 
-            st.subheader("⭐ Feature Importance")
+                if "AverageDailyConsumption" in data.columns:
+                    fraud_cases = data[data["Prediction"] == "Fraud"].sort_values(
+                        by="AverageDailyConsumption",
+                        ascending=False
+                    ).head(10)
+                else:
+                    fraud_cases = data[data["Prediction"] == "Fraud"].head(10)
 
-            if hasattr(model, "feature_importances_"):
+                if len(fraud_cases) > 0:
+                    st.dataframe(fraud_cases, use_container_width=True)
+                else:
+                    st.write("No fraud cases detected.")
 
-                importance_df = pd.DataFrame({
-                    "Feature": input_data.columns,
-                    "Importance": model.feature_importances_
-                }).sort_values("Importance", ascending=True)
+                st.divider()
 
-                fig2, ax2 = plt.subplots(figsize=(6, 4))
-                ax2.barh(importance_df["Feature"], importance_df["Importance"])
-                ax2.set_xlabel("Importance Score")
-                ax2.set_title("Most Important Features")
+                # ===============================
+                # Feature Importance
+                # ===============================
 
-                st.pyplot(fig2)
+                st.subheader("⭐ Feature Importance")
 
-            else:
-                st.write("Feature importance not available.")
+                if hasattr(model, "feature_importances_"):
 
-            st.divider()
+                    importance_df = pd.DataFrame({
+                        "Feature": input_data.columns,
+                        "Importance": model.feature_importances_
+                    }).sort_values("Importance", ascending=True)
 
-            # ===============================
-            # Prediction Results Table
-            # ===============================
+                    fig2, ax2 = plt.subplots(figsize=(6, 4))
+                    ax2.barh(importance_df["Feature"], importance_df["Importance"])
+                    ax2.set_xlabel("Importance Score")
+                    ax2.set_title("Most Important Features")
 
-            st.subheader("✅ Prediction Results")
-            st.dataframe(data, use_container_width=True)
+                    st.pyplot(fig2)
 
-            st.divider()
+                else:
+                    st.write("Feature importance not available.")
 
-            # ===============================
-            # Download Results
-            # ===============================
+                # ===============================
+                # Business Insight
+                # ===============================
 
-            st.subheader("⬇ Download Results")
+                st.info(
+                    "💡 Insight: MeterStatus and AverageDailyConsumption are strong fraud indicators. "
+                    "Energy companies should monitor these parameters to detect suspicious usage."
+                )
 
-            csv = data.to_csv(index=False).encode("utf-8")
+                st.divider()
 
-            st.download_button(
-                label="Download Results as CSV",
-                data=csv,
-                file_name="fraud_detection_results.csv",
-                mime="text/csv",
-                use_container_width=True
-            )
+                # ===============================
+                # Prediction Results Table
+                # ===============================
 
-        except Exception as e:
-            st.error(f"Prediction Error: {e}")
+                st.subheader("✅ Prediction Results")
+                st.dataframe(data, use_container_width=True)
+
+                st.divider()
+
+                # ===============================
+                # Download Results
+                # ===============================
+
+                st.subheader("⬇ Download Results")
+
+                csv = data.to_csv(index=False).encode("utf-8")
+
+                st.download_button(
+                    label="Download Results as CSV",
+                    data=csv,
+                    file_name="fraud_detection_results.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+
+            except Exception as e:
+                st.error(f"Prediction Error: {e}")
+
+
+# ============================================================
+# 📄 DATA OVERVIEW PAGE
+# ============================================================
+
+if page == "📄 Data Overview":
+
+    st.title("📄 Data Overview")
+
+    uploaded_file = st.file_uploader("Upload CSV to preview", type=["csv"])
+
+    if uploaded_file is not None:
+        data = pd.read_csv(uploaded_file)
+
+        st.subheader("Dataset Preview")
+        st.dataframe(data.head(20), use_container_width=True)
+
+        st.subheader("Dataset Shape")
+        st.write(data.shape)
+
+        st.subheader("Columns")
+        st.write(list(data.columns))
+
+
+# ============================================================
+# 🤖 MODEL INFO PAGE
+# ============================================================
+
+if page == "🤖 Model Info":
+
+    st.title("🤖 Model Information")
+
+    st.write("### Model Used")
+    st.write("Random Forest Classifier")
+
+    st.write("### Accuracy")
+    st.write("99%")
+
+    st.write("### Purpose")
+    st.write("Detects fraudulent energy consumption behavior.")
+
+    st.write("### Key Fraud Indicators")
+    st.write([
+        "MeterStatus",
+        "AverageDailyConsumption",
+        "PaymentHistory",
+        "UsageType",
+        "Location"
+    ])
