@@ -2,37 +2,65 @@
 
 ## 📌 Project Overview
 
-This project detects fraudulent electricity and gas consumption using Machine Learning.  
-The system analyzes energy usage patterns and predicts suspicious behavior.
+This project detects fraudulent electricity and gas consumption using Machine Learning. The system analyzes energy usage patterns and predicts suspicious behavior using a trained classification model.
 
-It helps energy companies identify fraud cases quickly and improve monitoring systems.
+It helps energy companies identify fraud cases quickly, monitor usage behavior, and generate business insights through an interactive dashboard.
 
 ---
 
 ## 🎯 Problem Statement
 
-Energy companies face losses due to fraudulent consumption.  
-This project uses Machine Learning to detect fraud based on usage patterns, payment history, and meter status.
+Energy companies face financial losses due to fraudulent energy consumption. Manual detection is slow and inefficient.
+
+This project uses Machine Learning to automatically detect fraud based on:
+
+- Energy usage patterns
+- Payment history
+- Meter status
+- Location and consumption behavior
+
+The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## ⭐ Features
+## ⭐ Key Features
+
+### 📊 Interactive Dashboard
 
 - Upload CSV dataset
-- Fraud prediction using Random Forest
-- Summary dashboard with metrics
-- Fraud vs Non-Fraud visualization
-- Top 10 fraud cases display
-- Feature importance chart (model explainability)
-- Download prediction results
+- Fraud prediction using Machine Learning
+- Business summary KPI metrics
+- Fraud percentage calculation
+- Professional data visualization
+
+### 📈 Analytics & Visualization
+
+- Fraud vs Non-Fraud distribution (donut chart)
+- Top 10 high-risk fraud cases
+- Feature importance visualization
+- Business insights for decision-making
+
+### 📄 Data Management
+
+- Dataset preview and overview
+- Dataset shape and column details
+- Download prediction results as CSV
+
+### 🤖 Model Information
+
+- Model details page
+- Accuracy information
+- Key fraud indicators display
 
 ---
 
 ## 🧠 Machine Learning Model
 
-- Random Forest Classifier
-- Model Accuracy: 99%
-- Handles classification of fraudulent and non-fraudulent behavior
+- **Model:** Random Forest Classifier
+- **Accuracy:** 99%
+- **Type:** Classification
+- **Purpose:** Detect fraudulent energy consumption behavior
+- **Explainability:** Feature importance analysis
 
 ---
 
@@ -75,14 +103,14 @@ energy-fraud-detection-ml/
 
 ## ⚙ Installation
 
-Clone the repository:
+### 1️⃣ Clone Repository
 
 ```
 git clone https://github.com/yourusername/energy-fraud-detection-ml.git
 cd energy-fraud-detection-ml
 ```
 
-Install dependencies:
+### 2️⃣ Install Dependencies
 
 ```
 pip install -r requirements.txt
@@ -90,30 +118,49 @@ pip install -r requirements.txt
 
 ---
 
-## ▶ How to Run Project
+## ▶ How to Run the Project
 
-Train the model:
+### Train the Model (Optional)
 
 ```
 python src/train_model.py
 ```
 
-Run Streamlit app:
+### Run Streamlit Application
 
 ```
 streamlit run app/streamlit_app.py
 ```
 
+The app will open in your browser.
+
 ---
 
-## 📊 Output
+## 📊 Application Output
+
+The system provides:
 
 - Fraud prediction results
-- Summary dashboard
-- Fraud distribution chart
-- Top fraud records
-- Feature importance visualization
-- Downloadable results file
+- Business summary dashboard with KPIs
+- Fraud distribution visualization
+- Top fraud records table
+- Feature importance chart
+- Dataset overview and statistics
+- Model information display
+- Downloadable prediction results
+
+---
+
+## 📸 Application Preview (Recommended)
+
+Add screenshots here for better presentation:
+
+- Dashboard interface
+- Fraud detection results
+- Visualizations
+- Feature importance chart
+
+_(Helps recruiters understand your project quickly.)_
 
 ---
 
@@ -121,12 +168,13 @@ streamlit run app/streamlit_app.py
 
 - Real-time fraud detection system
 - Database integration
-- Deep learning models
 - API deployment
+- Deep learning models
 - Model monitoring system
+- Cloud deployment
 
 ---
 
 ## 👨‍💻 Author
 
-Vishal Rajput
+**Vishal Rajput**
