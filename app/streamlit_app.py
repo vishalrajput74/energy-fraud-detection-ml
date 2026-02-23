@@ -42,10 +42,42 @@ if model is None:
 
 
 # ===============================
-# Sidebar Navigation
+# Sidebar Navigation (BIG FONT UI)
 # ===============================
 
-st.sidebar.title("⚡ Energy Fraud Detection")
+# BIG sidebar styling (very visible change)
+st.sidebar.markdown(
+    """
+    <style>
+
+    /* Sidebar title */
+    section[data-testid="stSidebar"] h2 {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+    }
+
+    /* Navigation label */
+    section[data-testid="stSidebar"] label {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+    }
+
+    /* Radio button text */
+    section[data-testid="stSidebar"] div[role="radiogroup"] label {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Sidebar title
+st.sidebar.markdown("## ⚡ Energy Fraud Detection")
+
+# Divider
+st.sidebar.divider()
 
 page = st.sidebar.radio(
     "Navigate",
@@ -86,13 +118,11 @@ if page == "📊 Dashboard":
             try:
                 input_data = data.copy()
 
-                # Remove unused columns
                 drop_columns = ["UserID", "MeterID", "FraudReported"]
                 for col in drop_columns:
                     if col in input_data.columns:
                         input_data = input_data.drop(col, axis=1)
 
-                # Encode categorical columns
                 categorical_cols = [
                     "UsageType",
                     "TariffPlan",
@@ -107,7 +137,6 @@ if page == "📊 Dashboard":
                         le = LabelEncoder()
                         input_data[col] = le.fit_transform(input_data[col])
 
-                # Prediction
                 predictions = model.predict(input_data)
 
                 data["Prediction"] = [
@@ -117,10 +146,7 @@ if page == "📊 Dashboard":
 
                 st.success("Fraud detection completed successfully")
 
-                # ===============================
-                # Business Summary (KPI)
-                # ===============================
-
+                # Business Summary
                 fraud_count = (predictions == 1).sum()
                 total_records = len(data)
                 fraud_percentage = (fraud_count / total_records) * 100
@@ -129,27 +155,18 @@ if page == "📊 Dashboard":
                 st.caption("Key fraud detection indicators")
 
                 col1, col2, col3 = st.columns(3)
-
                 col1.metric("Total Records", total_records)
-                col2.metric(
-                    "Fraud Cases",
-                    fraud_count,
-                    delta="High Risk" if fraud_percentage > 50 else "Normal"
-                )
+                col2.metric("Fraud Cases", fraud_count)
                 col3.metric("Fraud %", f"{fraud_percentage:.2f}%")
 
                 st.divider()
 
-                # ===============================
-                # Donut Chart (Professional)
-                # ===============================
-
+                # Donut Chart
                 st.subheader("📈 Fraud Distribution")
 
                 fraud_counts = data["Prediction"].value_counts()
 
                 fig, ax = plt.subplots()
-
                 colors = ["#ff4b4b", "#00c853"]
 
                 ax.pie(
@@ -165,10 +182,7 @@ if page == "📊 Dashboard":
 
                 st.divider()
 
-                # ===============================
-                # Top Fraud Cases (Sorted)
-                # ===============================
-
+                # Top Fraud Cases
                 st.subheader("🔴 Top 10 High Risk Fraud Cases")
 
                 if "AverageDailyConsumption" in data.columns:
@@ -186,10 +200,7 @@ if page == "📊 Dashboard":
 
                 st.divider()
 
-                # ===============================
                 # Feature Importance
-                # ===============================
-
                 st.subheader("⭐ Feature Importance")
 
                 if hasattr(model, "feature_importances_"):
@@ -201,48 +212,23 @@ if page == "📊 Dashboard":
 
                     fig2, ax2 = plt.subplots(figsize=(6, 4))
                     ax2.barh(importance_df["Feature"], importance_df["Importance"])
-                    ax2.set_xlabel("Importance Score")
-                    ax2.set_title("Most Important Features")
-
                     st.pyplot(fig2)
-
-                else:
-                    st.write("Feature importance not available.")
-
-                # ===============================
-                # Business Insight
-                # ===============================
-
-                st.info(
-                    "💡 Insight: MeterStatus and AverageDailyConsumption are strong fraud indicators. "
-                    "Energy companies should monitor these parameters to detect suspicious usage."
-                )
 
                 st.divider()
 
-                # ===============================
-                # Prediction Results Table
-                # ===============================
-
+                # Results
                 st.subheader("✅ Prediction Results")
                 st.dataframe(data, use_container_width=True)
 
                 st.divider()
 
-                # ===============================
-                # Download Results
-                # ===============================
-
-                st.subheader("⬇ Download Results")
-
+                # Download
                 csv = data.to_csv(index=False).encode("utf-8")
 
                 st.download_button(
                     label="Download Results as CSV",
                     data=csv,
-                    file_name="fraud_detection_results.csv",
-                    mime="text/csv",
-                    use_container_width=True
+                    file_name="fraud_detection_results.csv"
                 )
 
             except Exception as e:
@@ -250,7 +236,7 @@ if page == "📊 Dashboard":
 
 
 # ============================================================
-# 📄 DATA OVERVIEW PAGE
+# DATA OVERVIEW PAGE
 # ============================================================
 
 if page == "📄 Data Overview":
@@ -261,19 +247,13 @@ if page == "📄 Data Overview":
 
     if uploaded_file is not None:
         data = pd.read_csv(uploaded_file)
-
-        st.subheader("Dataset Preview")
-        st.dataframe(data.head(20), use_container_width=True)
-
-        st.subheader("Dataset Shape")
-        st.write(data.shape)
-
-        st.subheader("Columns")
-        st.write(list(data.columns))
+        st.dataframe(data.head(20))
+        st.write("Dataset Shape:", data.shape)
+        st.write("Columns:", list(data.columns))
 
 
 # ============================================================
-# 🤖 MODEL INFO PAGE
+# MODEL INFO PAGE
 # ============================================================
 
 if page == "🤖 Model Info":
@@ -288,12 +268,3 @@ if page == "🤖 Model Info":
 
     st.write("### Purpose")
     st.write("Detects fraudulent energy consumption behavior.")
-
-    st.write("### Key Fraud Indicators")
-    st.write([
-        "MeterStatus",
-        "AverageDailyConsumption",
-        "PaymentHistory",
-        "UsageType",
-        "Location"
-    ])
