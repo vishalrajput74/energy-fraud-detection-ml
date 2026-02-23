@@ -45,38 +45,28 @@ if model is None:
 # Sidebar Navigation (BIG FONT UI)
 # ===============================
 
-# BIG sidebar styling (very visible change)
 st.sidebar.markdown(
     """
     <style>
-
-    /* Sidebar title */
     section[data-testid="stSidebar"] h2 {
         font-size: 24px !important;
         font-weight: 700 !important;
     }
 
-    /* Navigation label */
     section[data-testid="stSidebar"] label {
         font-size: 18px !important;
         font-weight: 600 !important;
     }
 
-    /* Radio button text */
     section[data-testid="stSidebar"] div[role="radiogroup"] label {
         font-size: 18px !important;
-        font-weight: 500 !important;
     }
-
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Sidebar title
 st.sidebar.markdown("## ⚡ Energy Fraud Detection")
-
-# Divider
 st.sidebar.divider()
 
 page = st.sidebar.radio(
@@ -152,7 +142,6 @@ if page == "📊 Dashboard":
                 fraud_percentage = (fraud_count / total_records) * 100
 
                 st.subheader("📊 Business Summary")
-                st.caption("Key fraud detection indicators")
 
                 col1, col2, col3 = st.columns(3)
                 col1.metric("Total Records", total_records)
@@ -236,7 +225,7 @@ if page == "📊 Dashboard":
 
 
 # ============================================================
-# DATA OVERVIEW PAGE
+# 📄 DATA OVERVIEW PAGE
 # ============================================================
 
 if page == "📄 Data Overview":
@@ -247,24 +236,80 @@ if page == "📄 Data Overview":
 
     if uploaded_file is not None:
         data = pd.read_csv(uploaded_file)
+
+        st.subheader("Dataset Preview")
         st.dataframe(data.head(20))
-        st.write("Dataset Shape:", data.shape)
-        st.write("Columns:", list(data.columns))
+
+        st.subheader("Dataset Shape")
+        st.write(data.shape)
+
+        st.subheader("Columns")
+        st.write(list(data.columns))
 
 
 # ============================================================
-# MODEL INFO PAGE
+# 🤖 MODEL INFO PAGE (PROFESSIONAL VERSION)
 # ============================================================
 
 if page == "🤖 Model Info":
 
     st.title("🤖 Model Information")
 
-    st.write("### Model Used")
-    st.write("Random Forest Classifier")
+    st.divider()
 
-    st.write("### Accuracy")
-    st.write("99%")
+    # Model Summary
+    st.subheader("🧠 Model Summary")
 
-    st.write("### Purpose")
-    st.write("Detects fraudulent energy consumption behavior.")
+    col1, col2 = st.columns(2)
+    col1.metric("Model Type", "Random Forest")
+    col2.metric("Accuracy", "99%")
+
+    st.divider()
+
+    # Purpose
+    st.subheader("🎯 Model Purpose")
+    st.write(
+        "Detects fraudulent energy consumption behavior using usage patterns "
+        "and customer activity."
+    )
+
+    st.divider()
+
+    # Key Fraud Indicators
+    st.subheader("⭐ Key Fraud Indicators")
+
+    indicators = [
+        "AverageDailyConsumption",
+        "MeterStatus",
+        "PaymentHistory",
+        "UsageType",
+        "Location",
+        "TimeOfDay"
+    ]
+
+    for feature in indicators:
+        st.write(f"✅ {feature}")
+
+    st.divider()
+
+    # Expected Input Features
+    st.subheader("📌 Expected Input Features (Dataset Columns)")
+
+    columns_list = [
+        "UserID",
+        "Consumption",
+        "UsageType",
+        "TariffPlan",
+        "Location",
+        "AverageDailyConsumption",
+        "TimeOfDay",
+        "MeterID",
+        "MeterStatus",
+        "PaymentHistory",
+        "FraudReported"
+    ]
+
+    st.write("Total Features:", len(columns_list))
+
+    for col in columns_list:
+        st.write(f"🔹 {col}")
