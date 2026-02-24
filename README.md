@@ -167,7 +167,7 @@ Add screenshots here for better presentation:
 
 This chart shows fraud vs non-fraud transactions.
 
-![Fraud Chart](fraud_chart.png)
+![Fraud Chart](assets/fraud_chart.png)
 
 - Fraud detection results
 - Visualizations
