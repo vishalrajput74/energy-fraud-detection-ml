@@ -163,6 +163,12 @@ Add screenshots here for better presentation:
 
 ![Business Summary](assets/business_summary.png)
 
+## 📊 Fraud Distribution Chart
+
+This chart shows fraud vs non-fraud transactions.
+
+![Fraud Chart](fraud_chart.png)
+
 - Fraud detection results
 - Visualizations
 - Feature importance chart
