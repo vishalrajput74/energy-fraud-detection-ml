@@ -159,6 +159,10 @@ Add screenshots here for better presentation:
 
 ![Dashboard](assets/dashboard.png)
 
+### 📈 Fraud Detection Results / Business Summary
+
+![Business Summary](assets/business_summary.png)
+
 - Fraud detection results
 - Visualizations
 - Feature importance chart
