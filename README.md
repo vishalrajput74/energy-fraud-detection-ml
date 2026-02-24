@@ -151,18 +151,17 @@ The system provides:
 
 ---
 
-## 📸 Application Preview (Recommended)
+## 📸 Application Preview
 
 Add screenshots here for better presentation:
 
-- Dashboard interface
+### 📊 Dashboard Interface
+
+![Dashboard](assets/dashboard.png)
+
 - Fraud detection results
 - Visualizations
 - Feature importance chart
-
-_(Helps recruiters understand your project quickly.)_
-
----
 
 ## 🚀 Future Improvements
 
