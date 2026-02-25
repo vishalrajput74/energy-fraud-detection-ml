@@ -153,8 +153,6 @@ The system provides:
 
 ## 📸 Application Preview
 
-Add screenshots here for better presentation:
-
 ### 📊 Dashboard Interface
 
 ![Dashboard](assets/dashboard.png)
@@ -177,9 +175,9 @@ This chart shows fraud vs non-fraud transactions.
 
 ![Feature Importance](assets/feature_importance.png)
 
-- Fraud detection results
-- Visualizations
-- Feature importance chart
+### ✅ Prediction Results Table
+
+![Prediction Results](assets/prediction_results.png)
 
 ## 🚀 Future Improvements
 
