@@ -1,6 +1,6 @@
 # ⚡ AI-Based Energy Consumption Fraud Detection System
 
-## 📌 Project Overview
+### 📌 Project Overview
 
 This project detects fraudulent electricity and gas consumption using Machine Learning. The system analyzes energy usage patterns and predicts suspicious behavior using a trained classification model.
 
@@ -8,7 +8,7 @@ It helps energy companies identify fraud cases quickly, monitor usage behavior, 
 
 ---
 
-## 🎯 Problem Statement
+### 🎯 Problem Statement
 
 Energy companies face financial losses due to fraudulent energy consumption. Manual detection is slow and inefficient.
 
@@ -23,7 +23,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## ⭐ Key Features
+### ⭐ Key Features
 
 ### 📊 Interactive Dashboard
 
@@ -54,7 +54,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## 🧠 Machine Learning Model
+### 🧠 Machine Learning Model
 
 - **Model:** Random Forest Classifier
 - **Accuracy:** 99%
@@ -64,7 +64,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## 🛠 Tech Stack
+### 🛠 Tech Stack
 
 - Python
 - Streamlit
@@ -75,7 +75,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## 📂 Project Structure
+### 📂 Project Structure
 
 ```
 energy-fraud-detection-ml/
@@ -101,7 +101,7 @@ energy-fraud-detection-ml/
 
 ---
 
-## ⚙ Installation
+### ⚙ Installation
 
 ### 1️⃣ Clone Repository
 
@@ -118,7 +118,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶ How to Run the Project
+### ▶ How to Run the Project
 
 ### Train the Model (Optional)
 
@@ -136,7 +136,7 @@ The app will open in your browser.
 
 ---
 
-## 📊 Application Output
+### 📊 Application Output
 
 The system provides:
 
@@ -151,7 +151,7 @@ The system provides:
 
 ---
 
-## 📸 Application Preview
+### 📸 Application Preview
 
 ### 📊 Dashboard Interface
 
@@ -161,7 +161,7 @@ The system provides:
 
 ![Business Summary](assets/business_summary.png)
 
-## 📊 Fraud Distribution Chart
+### 📊 Fraud Distribution Chart
 
 This chart shows fraud vs non-fraud transactions.
 
@@ -175,11 +175,15 @@ This chart shows fraud vs non-fraud transactions.
 
 ![Feature Importance](assets/feature_importance.png)
 
+### 🤖 Model Information
+
+![Model Information](assets/model_summary.png)
+
 ### ✅ Prediction Results Table
 
 ![Prediction Results](assets/prediction_results.png)
 
-## 🚀 Future Improvements
+### 🚀 Future Improvements
 
 - Real-time fraud detection system
 - Database integration
@@ -190,6 +194,6 @@ This chart shows fraud vs non-fraud transactions.
 
 ---
 
-## 👨‍💻 Author
+### 👨‍💻 Author
 
 **Vishal Rajput**
