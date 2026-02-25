@@ -173,6 +173,10 @@ This chart shows fraud vs non-fraud transactions.
 
 ![Top Fraud Cases](assets/top_fraud_cases.png)
 
+### ⭐ Feature Importance
+
+![Feature Importance](assets/feature_importance.png)
+
 - Fraud detection results
 - Visualizations
 - Feature importance chart
