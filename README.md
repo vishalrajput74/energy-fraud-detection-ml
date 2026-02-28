@@ -77,33 +77,34 @@ The system provides automated predictions, analytics, and visual insights.
 
 ### 📂 Project Structure
 
-```
 energy-fraud-detection-ml/
 │
 ├── app/
-│   └── streamlit_app.py
+│ └── streamlit_app.py
 │
 ├── data/
-│   └── energy_fraud_dataset.csv
+│ └── energy_fraud_dataset.csv
 │
 ├── models/
-│   └── fraud_model.pkl
+│ └── fraud_model.pkl
+│
+├── notebook/
+│ └── fraud_detection.ipynb
 │
 ├── src/
-│   └── train_model.py
+│ └── train_model.py
 │
 ├── assets/
-│   ├── dashboard.png
-│   ├── business_summary.png
-│   ├── fraud_chart.png
-│   ├── top_fraud_cases.png
-│   ├── feature_importance.png
-│   ├── model_summary.png
-│   └── prediction_results.png
+│ ├── dashboard.png
+│ ├── business_summary.png
+│ ├── fraud_chart.png
+│ ├── top_fraud_cases.png
+│ ├── feature_importance.png
+│ ├── model_summary.png
+│ └── prediction_results.png
 │
 ├── requirements.txt
 └── README.md
-```
 
 ---
 
