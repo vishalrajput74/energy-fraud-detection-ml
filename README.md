@@ -1,6 +1,6 @@
 # ⚡ AI-Based Energy Consumption Fraud Detection System
 
-### 📌 Project Overview
+## 📌 Project Overview
 
 This project detects fraudulent electricity and gas consumption using Machine Learning. The system analyzes energy usage patterns and predicts suspicious behavior using a trained classification model.
 
@@ -8,7 +8,7 @@ It helps energy companies identify fraud cases quickly, monitor usage behavior, 
 
 ---
 
-### 🎯 Problem Statement
+## 🎯 Problem Statement
 
 Energy companies face financial losses due to fraudulent energy consumption. Manual detection is slow and inefficient.
 
@@ -23,7 +23,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-### ⭐ Key Features
+## ⭐ Key Features
 
 ### 📊 Interactive Dashboard
 
@@ -54,7 +54,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-### 🧠 Machine Learning Model
+## 🧠 Machine Learning Model
 
 - **Model:** Random Forest Classifier
 - **Accuracy:** 99%
@@ -64,7 +64,44 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-### 🛠 Tech Stack
+## 📊 Dataset
+
+- **Source:** Kaggle Energy Consumption Dataset
+- Contains energy usage patterns, meter readings, payment data, and fraud labels.
+- Used for training and testing fraud detection model.
+
+---
+
+## ⚙ Model Training Steps
+
+The machine learning model was developed using the following pipeline:
+
+### Data Preprocessing
+
+- Handling missing values
+- Data cleaning
+- Feature selection
+
+### Feature Encoding
+
+- Convert categorical variables into numerical format
+
+### Model Training
+
+- Random Forest Classifier training
+
+### Model Evaluation
+
+- Accuracy measurement
+- Performance validation
+
+### Model Saving
+
+- Saved using Joblib for deployment
+
+---
+
+## 🛠 Tech Stack
 
 - Python
 - Streamlit
@@ -75,7 +112,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-### 📂 Project Structure
+## 📂 Project Structure
 
 ```
 energy-fraud-detection-ml/
@@ -110,7 +147,7 @@ energy-fraud-detection-ml/
 
 ---
 
-### ⚙ Installation
+## 🚀 Installation
 
 ### 1️⃣ Clone Repository
 
@@ -127,7 +164,7 @@ pip install -r requirements.txt
 
 ---
 
-### ▶ How to Run the Project
+## ▶ How to Run the Project
 
 ### Train the Model (Optional)
 
@@ -141,11 +178,11 @@ python src/train_model.py
 streamlit run app/streamlit_app.py
 ```
 
-The app will open in your browser.
+The application will open automatically in your browser.
 
 ---
 
-### 📊 Application Output
+## 📊 Application Output
 
 The system provides:
 
@@ -160,7 +197,7 @@ The system provides:
 
 ---
 
-### 📸 Application Preview
+## 📸 Application Preview
 
 ### 📊 Dashboard Interface
 
@@ -172,8 +209,7 @@ The system provides:
 
 ### 📊 Fraud Distribution Chart
 
-This chart shows fraud vs non-fraud transactions.
-
+This chart shows fraud vs non-fraud transactions.  
 ![Fraud Chart](assets/fraud_chart.png)
 
 ### 🔴 Top Fraud Cases
@@ -192,17 +228,19 @@ This chart shows fraud vs non-fraud transactions.
 
 ![Prediction Results](assets/prediction_results.png)
 
-### 🚀 Future Improvements
+---
+
+## 🚀 Future Improvements
 
 - Real-time fraud detection system
 - Database integration
-- API deployment
+- REST API deployment
 - Deep learning models
 - Model monitoring system
-- Cloud deployment
+- Cloud deployment (AWS/GCP/Azure)
 
 ---
 
-### 👨‍💻 Author
+## 👨‍💻 Author
 
 **Vishal Rajput**
