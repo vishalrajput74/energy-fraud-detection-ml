@@ -64,11 +64,39 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
+### 📊 Model Performance
+
+- Model Type: Classification
+- Algorithm: Random Forest Classifier
+- Accuracy: 99%
+- Evaluation Metrics:
+  - Precision
+  - Recall
+  - F1-score
+- Feature Importance Analysis performed
+
+---
+
 ## 📊 Dataset
 
 - **Source:** Kaggle Energy Consumption Dataset
 - Contains energy usage patterns, meter readings, payment data, and fraud labels.
 - Used for training and testing fraud detection model.
+
+---
+
+### 📁 Dataset Information
+
+- Dataset: Energy Consumption Dataset
+- Format: CSV
+- Contains features like:
+  - Energy usage
+  - Payment history
+  - Meter status
+  - Location data
+- Used for training and fraud prediction.
+
+Users can upload their own dataset in the same format for prediction.
 
 ---
 
