@@ -89,11 +89,17 @@ energy-fraud-detection-ml/
 ├── models/
 │   └── fraud_model.pkl
 │
-├── notebook/
-│   └── fraud_detection.ipynb
-│
 ├── src/
 │   └── train_model.py
+│
+├── assets/
+│   ├── dashboard.png
+│   ├── business_summary.png
+│   ├── fraud_chart.png
+│   ├── top_fraud_cases.png
+│   ├── feature_importance.png
+│   ├── model_summary.png
+│   └── prediction_results.png
 │
 ├── requirements.txt
 └── README.md
