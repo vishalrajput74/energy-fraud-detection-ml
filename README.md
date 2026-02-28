@@ -112,7 +112,7 @@ energy-fraud-detection-ml/
 ### 1️⃣ Clone Repository
 
 ```
-git clone https://github.com/yourusername/energy-fraud-detection-ml.git
+git clone https://github.com/vishalrajput74/energy-fraud-detection-ml
 cd energy-fraud-detection-ml
 ```
 
