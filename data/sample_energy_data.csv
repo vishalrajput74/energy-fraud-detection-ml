@@ -1,5 +1,31 @@
-energy_usage,payment_history,meter_status,location
-350,paid,active,urban
-1200,unpaid,faulty,rural
-500,paid,active,urban
-900,unpaid,active,semi-urban
+UserID,Consumption,UsageType,TariffPlan,Location,AverageDailyConsumption,TimeOfDay,MeterID,MeterStatus,PaymentHistory,FraudReported
+1,86.66,electricity,Commercial,Chicago,358.12,peak,M-2794,Normal,Late,0
+2,174.58,electricity,Residential,Chicago,65.13,peak,M-3306,Normal,Late,1
+3,196.68,electricity,Commercial,Houston,241.98,peak,M-2447,Tampered,Late,1
+4,228.18,electricity,Commercial,Seattle,224.32,peak,M-2697,Tampered,On-Time,1
+5,169.94,gas,Residential,Boston,301.68,peak,M-1536,Tampered,On-Time,1
+6,216.1,gas,Residential,New York,392.7,off-peak,M-5745,Normal,On-Time,0
+7,219.66,gas,Residential,Chicago,479.46,peak,M-6030,Tampered,Late,1
+8,322.11,electricity,Commercial,Dallas,101.31,off-peak,M-6930,Tampered,Late,1
+9,127.75,gas,Commercial,New York,64.82,off-peak,M-9038,Normal,Late,0
+10,313.63,gas,Residential,Dallas,124.13,off-peak,M-6209,Normal,On-Time,1
+11,356.05,gas,Residential,Los Angeles,320.13,peak,M-6229,Tampered,Late,1
+12,305.78,electricity,Residential,Seattle,32.28,off-peak,M-5307,Normal,On-Time,1
+13,471.83,gas,Commercial,Chicago,360.75,off-peak,M-8286,Normal,On-Time,0
+14,371.65,electricity,Commercial,Houston,438.03,peak,M-2185,Normal,Late,0
+15,446.04,gas,Commercial,Houston,361.31,off-peak,M-2773,Tampered,Late,1
+16,138.7,electricity,Commercial,Chicago,320.95,off-peak,M-8206,Tampered,Late,1
+17,357.56,electricity,Commercial,Chicago,58.79,peak,M-2652,Tampered,Late,1
+18,354.87,gas,Commercial,Miami,285.2,peak,M-1294,Tampered,On-Time,1
+19,203.11,gas,Commercial,New York,147.18,off-peak,M-8634,Normal,Late,0
+20,241.88,electricity,Commercial,Dallas,106.31,peak,M-8321,Tampered,On-Time,1
+21,324.49,electricity,Residential,Chicago,190.32,peak,M-8542,Normal,On-Time,0
+22,431.48,electricity,Residential,New York,78.61,peak,M-5857,Normal,Late,1
+23,426.33,electricity,Residential,Chicago,80.58,peak,M-2231,Normal,On-Time,1
+24,320.43,electricity,Commercial,Seattle,487.22,off-peak,M-5818,Normal,Late,0
+25,39.35,gas,Residential,Houston,27.14,peak,M-4197,Normal,On-Time,0
+26,489.12,electricity,Commercial,Dallas,180.15,off-peak,M-3293,Normal,On-Time,1
+27,293.27,gas,Commercial,Houston,481.6,off-peak,M-7895,Normal,On-Time,0
+28,423.3,electricity,Residential,New York,120.2,peak,M-5014,Normal,On-Time,1
+29,215.88,electricity,Residential,Dallas,374.23,peak,M-4358,Normal,On-Time,0
+30,254.64,gas,Commercial,Miami,395.53,off-peak,M-6686,Normal,On-Time,0
