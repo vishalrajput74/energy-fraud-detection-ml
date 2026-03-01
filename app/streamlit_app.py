@@ -93,7 +93,7 @@ if page == "📊 Dashboard":
     st.info("Model: Random Forest Classifier | Accuracy: 99%")
 
     # ===============================
-    # ✅ NEW — SAMPLE DATASET DOWNLOAD
+    # SAMPLE DATASET DOWNLOAD
     # ===============================
 
     st.subheader("⬇ Download Sample Dataset")
@@ -126,6 +126,34 @@ if page == "📊 Dashboard":
     if uploaded_file is not None:
 
         data = pd.read_csv(uploaded_file)
+
+        # ===============================
+        # DATASET VALIDATION (NEW)
+        # ===============================
+
+        required_columns = [
+            "Consumption",
+            "UsageType",
+            "TariffPlan",
+            "Location",
+            "AverageDailyConsumption",
+            "TimeOfDay",
+            "MeterStatus",
+            "PaymentHistory"
+        ]
+
+        missing_columns = [col for col in required_columns if col not in data.columns]
+
+        if missing_columns:
+            st.error(f"Dataset format incorrect. Missing columns: {missing_columns}")
+            st.info("Please upload dataset with correct format or use sample dataset.")
+            st.stop()
+
+        st.success("Dataset format verified successfully")
+
+        # ===============================
+        # Continue Existing Flow
+        # ===============================
 
         st.subheader("📄 Uploaded Data Preview")
         st.dataframe(data.head(10), use_container_width=True)
@@ -253,7 +281,7 @@ if page == "📊 Dashboard":
 
 
 # ============================================================
-# 📄 DATA OVERVIEW PAGE
+# DATA OVERVIEW PAGE
 # ============================================================
 
 if page == "📄 Data Overview":
@@ -276,7 +304,7 @@ if page == "📄 Data Overview":
 
 
 # ============================================================
-# 🤖 MODEL INFO PAGE
+# MODEL INFO PAGE
 # ============================================================
 
 if page == "🤖 Model Info":
