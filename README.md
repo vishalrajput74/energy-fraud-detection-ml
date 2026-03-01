@@ -27,6 +27,7 @@ The system provides automated predictions, analytics, and visual insights.
 
 ### 📊 Interactive Dashboard
 
+- Download sample dataset for testing
 - Upload CSV dataset
 - Fraud prediction using Machine Learning
 - Business summary KPI metrics
