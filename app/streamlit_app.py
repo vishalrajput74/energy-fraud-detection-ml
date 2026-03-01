@@ -42,7 +42,7 @@ if model is None:
 
 
 # ===============================
-# Sidebar Navigation (BIG FONT UI)
+# Sidebar Navigation
 # ===============================
 
 st.sidebar.markdown(
@@ -91,6 +91,35 @@ if page == "📊 Dashboard":
     st.divider()
 
     st.info("Model: Random Forest Classifier | Accuracy: 99%")
+
+    # ===============================
+    # ✅ NEW — SAMPLE DATASET DOWNLOAD
+    # ===============================
+
+    st.subheader("⬇ Download Sample Dataset")
+
+    try:
+        BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+        sample_path = os.path.join(BASE_DIR, "data", "sample_energy_data.csv")
+
+        sample_data = pd.read_csv(sample_path)
+
+        st.download_button(
+            label="Download Sample Dataset",
+            data=sample_data.to_csv(index=False),
+            file_name="sample_energy_data.csv",
+            mime="text/csv"
+        )
+
+        st.caption("Upload dataset with same format as sample.")
+    except:
+        st.warning("Sample dataset not found. Add 'sample_energy_data.csv' inside data folder.")
+
+    st.divider()
+
+    # ===============================
+    # File Upload
+    # ===============================
 
     uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
 
@@ -211,7 +240,6 @@ if page == "📊 Dashboard":
 
                 st.divider()
 
-                # Download
                 csv = data.to_csv(index=False).encode("utf-8")
 
                 st.download_button(
@@ -248,7 +276,7 @@ if page == "📄 Data Overview":
 
 
 # ============================================================
-# 🤖 MODEL INFO PAGE (PROFESSIONAL VERSION)
+# 🤖 MODEL INFO PAGE
 # ============================================================
 
 if page == "🤖 Model Info":
@@ -257,7 +285,6 @@ if page == "🤖 Model Info":
 
     st.divider()
 
-    # Model Summary
     st.subheader("🧠 Model Summary")
 
     col1, col2 = st.columns(2)
@@ -266,7 +293,6 @@ if page == "🤖 Model Info":
 
     st.divider()
 
-    # Purpose
     st.subheader("🎯 Model Purpose")
     st.write(
         "Detects fraudulent energy consumption behavior using usage patterns "
@@ -275,7 +301,6 @@ if page == "🤖 Model Info":
 
     st.divider()
 
-    # Key Fraud Indicators
     st.subheader("⭐ Key Fraud Indicators")
 
     indicators = [
@@ -292,7 +317,6 @@ if page == "🤖 Model Info":
 
     st.divider()
 
-    # Expected Input Features
     st.subheader("📌 Expected Input Features (Dataset Columns)")
 
     columns_list = [

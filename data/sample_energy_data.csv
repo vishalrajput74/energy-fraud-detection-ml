@@ -1,0 +1,5 @@
+energy_usage,payment_history,meter_status,location
+350,paid,active,urban
+1200,unpaid,faulty,rural
+500,paid,active,urban
+900,unpaid,active,semi-urban
