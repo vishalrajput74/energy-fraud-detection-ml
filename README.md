@@ -30,6 +30,7 @@ The system provides automated predictions, analytics, and visual insights.
 - Download sample dataset for testing
 - Upload CSV dataset
 - Fraud prediction using Machine Learning
+- Dataset format validation to prevent incorrect uploads
 - Business summary KPI metrics
 - Fraud percentage calculation
 - Professional data visualization
