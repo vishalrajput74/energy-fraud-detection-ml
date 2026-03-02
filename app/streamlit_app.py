@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(
     page_title="Energy Fraud Detection",
     page_icon="⚡",
-    layout="centered"
+    layout="wide"
 )
 
 
