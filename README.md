@@ -1,6 +1,6 @@
-# ⚡ AI-Based Energy Consumption Fraud Detection System
+⚡ AI-Based Energy Consumption Fraud Detection System
 
-## 📌 Project Overview
+📌 Project Overview
 
 This project detects fraudulent electricity and gas consumption using Machine Learning. The system analyzes energy usage patterns and predicts suspicious behavior using a trained classification model.
 
@@ -8,7 +8,21 @@ It helps energy companies identify fraud cases quickly, monitor usage behavior, 
 
 ---
 
-## 🎯 Problem Statement
+🚀 Live Demo
+
+👉 Try the deployed application here:
+https://vishalrajput74-energy-fraud-detection-m-appstreamlit-app-wcot66.streamlit.app/
+
+Users can:
+
+- Upload dataset
+- Download sample dataset
+- Detect fraud instantly
+- View analytics and insights
+
+---
+
+🎯 Problem Statement
 
 Energy companies face financial losses due to fraudulent energy consumption. Manual detection is slow and inefficient.
 
@@ -23,9 +37,9 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## ⭐ Key Features
+⭐ Key Features
 
-### 📊 Interactive Dashboard
+📊 Interactive Dashboard
 
 - Download sample dataset for testing
 - Upload CSV dataset
@@ -35,20 +49,20 @@ The system provides automated predictions, analytics, and visual insights.
 - Fraud percentage calculation
 - Professional data visualization
 
-### 📈 Analytics & Visualization
+📈 Analytics & Visualization
 
 - Fraud vs Non-Fraud distribution (donut chart)
 - Top 10 high-risk fraud cases
 - Feature importance visualization
 - Business insights for decision-making
 
-### 📄 Data Management
+📄 Data Management
 
 - Dataset preview and overview
 - Dataset shape and column details
 - Download prediction results as CSV
 
-### 🤖 Model Information
+🤖 Model Information
 
 - Model details page
 - Accuracy information
@@ -56,17 +70,15 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## 🧠 Machine Learning Model
+🧠 Machine Learning Model
 
-- **Model:** Random Forest Classifier
-- **Accuracy:** 99%
-- **Type:** Classification
-- **Purpose:** Detect fraudulent energy consumption behavior
-- **Explainability:** Feature importance analysis
+- Model: Random Forest Classifier
+- Accuracy: 99%
+- Type: Classification
+- Purpose: Detect fraudulent energy consumption behavior
+- Explainability: Feature importance analysis
 
----
-
-### 📊 Model Performance
+📊 Model Performance
 
 - Model Type: Classification
 - Algorithm: Random Forest Classifier
@@ -79,59 +91,63 @@ The system provides automated predictions, analytics, and visual insights.
 
 ---
 
-## 📊 Dataset
+📊 Dataset
 
-- **Source:** Kaggle Energy Consumption Dataset
+- Source: Kaggle Energy Consumption Dataset
+- Format: CSV
 - Contains energy usage patterns, meter readings, payment data, and fraud labels.
 - Used for training and testing fraud detection model.
 
+📁 Dataset Information
+
+Users can upload their own dataset for prediction.
+
+✅ Expected Dataset Format (Required Columns)
+
+The uploaded dataset must contain the following columns:
+
+- Consumption
+- UsageType
+- TariffPlan
+- Location
+- AverageDailyConsumption
+- TimeOfDay
+- MeterStatus
+- PaymentHistory
+
+If the format is incorrect, the system will show a validation error.
+A sample dataset is provided in the project for testing.
+
 ---
 
-### 📁 Dataset Information
+⚙ Model Training Steps
 
-- Dataset: Energy Consumption Dataset
-- Format: CSV
-- Contains features like:
-  - Energy usage
-  - Payment history
-  - Meter status
-  - Location data
-- Used for training and fraud prediction.
-
-Users can upload their own dataset in the same format for prediction.
-
----
-
-## ⚙ Model Training Steps
-
-The machine learning model was developed using the following pipeline:
-
-### Data Preprocessing
+Data Preprocessing
 
 - Handling missing values
 - Data cleaning
 - Feature selection
 
-### Feature Encoding
+Feature Encoding
 
 - Convert categorical variables into numerical format
 
-### Model Training
+Model Training
 
 - Random Forest Classifier training
 
-### Model Evaluation
+Model Evaluation
 
 - Accuracy measurement
 - Performance validation
 
-### Model Saving
+Model Saving
 
 - Saved using Joblib for deployment
 
 ---
 
-## 🛠 Tech Stack
+🛠 Tech Stack
 
 - Python
 - Streamlit
@@ -142,78 +158,68 @@ The machine learning model was developed using the following pipeline:
 
 ---
 
-## 📂 Project Structure
+📂 Project Structure
 
-```
 energy-fraud-detection-ml/
 │
 ├── app/
-│   └── streamlit_app.py
+│ └── streamlit_app.py
 │
 ├── data/
-│   ├── energy_fraud_dataset.csv
-│   └── sample_energy_data.csv        ← sample dataset for users (NEW)
+│ ├── energy_fraud_dataset.csv
+│ └── sample_energy_data.csv
 │
 ├── models/
-│   └── fraud_model.pkl
+│ └── fraud_model.pkl
 │
 ├── notebook/
-│   └── fraud_detection.ipynb
+│ └── fraud_detection.ipynb
 │
 ├── src/
-│   └── train_model.py
+│ └── train_model.py
 │
 ├── assets/
-│   ├── dashboard.png
-│   ├── business_summary.png
-│   ├── fraud_chart.png
-│   ├── top_fraud_cases.png
-│   ├── feature_importance.png
-│   ├── model_summary.png
-│   └── prediction_results.png
+│ ├── dashboard.png
+│ ├── business_summary.png
+│ ├── fraud_chart.png
+│ ├── top_fraud_cases.png
+│ ├── feature_importance.png
+│ ├── model_summary.png
+│ └── prediction_results.png
 │
 ├── requirements.txt
 └── README.md
-```
 
 ---
 
-## 🚀 Installation
+🚀 Installation
 
-### 1️⃣ Clone Repository
+1️⃣ Clone Repository
 
-```
 git clone https://github.com/vishalrajput74/energy-fraud-detection-ml
 cd energy-fraud-detection-ml
-```
 
-### 2️⃣ Install Dependencies
+2️⃣ Install Dependencies
 
-```
 pip install -r requirements.txt
-```
 
 ---
 
-## ▶ How to Run the Project
+▶ How to Run the Project
 
-### Train the Model (Optional)
+Train the Model (Optional)
 
-```
 python src/train_model.py
-```
 
-### Run Streamlit Application
+Run Streamlit Application
 
-```
 streamlit run app/streamlit_app.py
-```
 
 The application will open automatically in your browser.
 
 ---
 
-## 📊 Application Output
+📊 Application Output
 
 The system provides:
 
@@ -228,40 +234,40 @@ The system provides:
 
 ---
 
-## 📸 Application Preview
+📸 Application Preview
 
-### 📊 Dashboard Interface
+📊 Dashboard Interface
 
-![Dashboard](assets/dashboard.png)
+"Dashboard" (assets/dashboard.png)
 
-### 📈 Fraud Detection Results / Business Summary
+📈 Fraud Detection Results / Business Summary
 
-![Business Summary](assets/business_summary.png)
+"Business Summary" (assets/business_summary.png)
 
-### 📊 Fraud Distribution Chart
+📊 Fraud Distribution Chart
 
-This chart shows fraud vs non-fraud transactions.  
-![Fraud Chart](assets/fraud_chart.png)
+This chart shows fraud vs non-fraud transactions.
+"Fraud Chart" (assets/fraud_chart.png)
 
-### 🔴 Top Fraud Cases
+🔴 Top Fraud Cases
 
-![Top Fraud Cases](assets/top_fraud_cases.png)
+"Top Fraud Cases" (assets/top_fraud_cases.png)
 
-### ⭐ Feature Importance
+⭐ Feature Importance
 
-![Feature Importance](assets/feature_importance.png)
+"Feature Importance" (assets/feature_importance.png)
 
-### 🤖 Model Information
+🤖 Model Information
 
-![Model Information](assets/model_summary.png)
+"Model Information" (assets/model_summary.png)
 
-### ✅ Prediction Results Table
+✅ Prediction Results Table
 
-![Prediction Results](assets/prediction_results.png)
+"Prediction Results" (assets/prediction_results.png)
 
 ---
 
-## 🚀 Future Improvements
+🚀 Future Improvements
 
 - Real-time fraud detection system
 - Database integration
@@ -272,6 +278,6 @@ This chart shows fraud vs non-fraud transactions.
 
 ---
 
-## 👨‍💻 Author
+👨‍💻 Author
 
-**Vishal Rajput**
+Vishal Rajput
