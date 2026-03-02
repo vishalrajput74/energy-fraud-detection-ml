@@ -151,7 +151,8 @@ energy-fraud-detection-ml/
 │   └── streamlit_app.py
 │
 ├── data/
-│   └── energy_fraud_dataset.csv
+│   ├── energy_fraud_dataset.csv
+│   └── sample_energy_data.csv        ← sample dataset for users (NEW)
 │
 ├── models/
 │   └── fraud_model.pkl
