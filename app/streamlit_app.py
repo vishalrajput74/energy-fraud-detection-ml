@@ -71,7 +71,7 @@ st.sidebar.divider()
 
 page = st.sidebar.radio(
     "Navigate",
-    ["📊 Dashboard", "📄 Data Overview", "🤖 About "]
+    ["📊 Dashboard", "📄 Data Overview", "🤖 Model Info"]
 )
 
 
