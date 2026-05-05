@@ -71,7 +71,7 @@ st.sidebar.divider()
 
 page = st.sidebar.radio(
     "Navigate",
-    [" Dashboard", " Data Overview", " About Us"]
+    ["Dashboard", "Data Overview", "About Us"]
 )
 
 
@@ -284,7 +284,7 @@ if page == "Dashboard":
 # DATA OVERVIEW PAGE
 # ============================================================
 
-if page == " Data Overview":
+if page == "Data Overview":
 
     st.title("📄 Data Overview")
 
